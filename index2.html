@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Arvin Doña's Probability and Statistics learning portfolio.">
+<title>Arvin Doña | Probability & Statistics</title>
+<style>
+:root{--bg:#0c1220;--panel:#151e30;--text:#edf2fa;--muted:#a8b6ce;--line:#2a3850;--accent:#7ce6ca;--second:#a7adff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.7 system-ui,sans-serif}
+body.light{--bg:#f4f7fb;--panel:#fff;--text:#14223b;--muted:#52617b;--line:#d4deeb;--accent:#08775e;--second:#5553bd}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--accent)}
+button,input,textarea{font:inherit}
+button,.button{cursor:pointer;border:1px solid var(--line);border-radius:10px;padding:10px 17px;background:var(--panel);color:var(--text);display:inline-block}
+button:hover,.button:hover{border-color:var(--accent)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--second);outline-offset:4px}
+.primary{background:var(--accent);color:var(--bg);font-weight:700;border-color:var(--accent)}
+.wrap{width:min(1120px,90%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 0}
+.brand{font-weight:800;letter-spacing:-.8px;font-size:22px}
+.brand span{color:var(--accent)}
+.links{display:flex;align-items:center;gap:22px;font-size:14px}
+.hero{padding:90px 0 65px;display:grid;grid-template-columns:1.5fr 1fr;gap:65px;align-items:center}
+.eyebrow,.tag{color:var(--accent);font-size:12px;font-weight:750;letter-spacing:1.6px;text-transform:uppercase}
+h1{font-size:clamp(40px,6.5vw,76px);line-height:1.08;letter-spacing:-3px;margin:20px 0}
+h1 span{color:var(--accent)}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.2;letter-spacing:-1px;margin:10px 0 20px}
+h3{line-height:1.35;margin:15px 0 10px;font-size:21px}
+p{color:var(--muted);margin:10px 0 20px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.visual{padding:30px;border:1px solid var(--line);border-radius:24px;background:var(--panel);transform:rotate(2deg)}
+.visual svg{width:100%;height:auto}
+.mini{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.stats div{padding:22px;text-align:center;background:var(--panel)}
+.stats strong{display:block;font-size:25px;color:var(--accent)}
+.stats span{color:var(--muted);font-size:13px}
+section{padding:65px 0;border-bottom:1px solid var(--line)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{padding:26px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}
+.card p{font-size:14px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:25px}
+.search,textarea{background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%}
+.search{max-width:270px}
+.check{color:var(--muted);font-size:13px;display:flex;gap:8px;align-items:center}
+.check input{accent-color:var(--accent)}
+.progress{height:6px;border-radius:8px;background:var(--line);margin:12px 0 28px;overflow:hidden}
+.progress div{height:100%;background:var(--accent);transition:width .3s}
+.small{font-size:13px;color:var(--muted)}
+.results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:18px}
+.result{background:var(--bg);padding:12px;border-radius:8px;font-size:13px;color:var(--muted)}
+.result strong{display:block;font-size:20px;color:var(--text)}
+.badge{display:inline-block;padding:4px 9px;background:var(--bg);border-radius:6px;color:var(--second);font-size:12px}
+.list{padding-left:22px;color:var(--muted)}
+textarea{min-height:120px;resize:vertical}
+footer{padding:30px 0 45px;color:var(--muted);font-size:13px;text-align:center}
+.skip{position:absolute;top:-100px}
+.skip:focus{top:10px;background:var(--panel);padding:10px;z-index:20}
+.quiz-options{display:grid;gap:9px}
+.quiz-options button{text-align:left}
+.quiz-options button:disabled{cursor:default;opacity:.7}
+[hidden]{display:none!important}
+@media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:55px;gap:30px}.visual{max-width:420px;transform:none}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}.links{gap:12px}.links a{display:none}.section-head{display:block}.search{max-width:none}h1{letter-spacing:-2px}}
+@media(max-width:500px){.grid{grid-template-columns:1fr}.stats div{padding:14px 6px}.card{padding:22px}section{padding:45px 0}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+<nav class="wrap" aria-label="Main navigation">
+<a class="brand" href="#">PROBABILITY AND STATISTICS</a>
+<div class="links">
+<a href="#about">About</a>
+<a href="#learning">Learning</a>
+<a href="#projects">Projects</a>
+<a href="#lab">Data lab</a>
+<button id="theme" aria-label="Toggle light or dark theme">◐ Theme</button>
+</div>
+</nav>
+</header>
+<main id="main" class="wrap">
+<div class="hero">
+<div>
+<div class="eyebrow">A Probability & Statistics Portfolio</div>
+<h1>Making sense<br>of <span>uncertainty.</span></h1>
+<p>Hi, I'm Arvin Doña. Welcome to my learning portfolio—a space to organize course topics, explore data, and build statistical projects.</p>
+<div class="actions">
+<a class="button primary" href="#learning">Explore my learning →</a>
+<a class="button" href="#lab">Try the data lab</a>
+</div>
+<p class="small">PROBSTA · First Trimester · AY 2026–2027</p>
+</div>
+<div class="visual">
+<div class="mini"><span>DATA → INSIGHT</span><span>ILLUSTRATIVE CURVE</span></div>
+<svg viewBox="0 0 360 230" role="img" aria-label="Illustrative bell-shaped curve">
+<defs>
+<linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+<stop stop-color="#7ce6ca" stop-opacity=".5"/>
+<stop offset="1" stop-color="#7ce6ca" stop-opacity="0"/>
+</linearGradient>
+</defs>
+<path d="M20 190H340M180 30V200" stroke="var(--line)" stroke-dasharray="4 5"/>
+<path d="M20 190 C90 190 105 170 130 110 S165 30 180 30 S205 50 230 110 S270 190 340 190 L340 200H20Z" fill="url(#fill)"/>
+<path d="M20 190 C90 190 105 170 130 110 S165 30 180 30 S205 50 230 110 S270 190 340 190" fill="none" stroke="var(--accent)" stroke-width="4"/>
+<text x="174" y="222" fill="var(--muted)" font-size="14">μ</text>
+</svg>
+<h3>Observe. Analyze. Interpret.</h3>
+<p>Numbers become meaningful when we communicate them clearly.</p>
+</div>
+</div>
+<div class="stats">
+<div><strong>09</strong><span>Course units</span></div>
+<div><strong>14</strong><span>Weeks in the course plan</span></div>
+<div><strong>01</strong><span>Culminating group project</span></div>
+</div>
+<section id="about">
+<div class="eyebrow">The person behind the portfolio</div>
+<h2>Learning with purpose.</h2>
+<div class="two">
+<div>
+<p>This portfolio is organized around Northwestern University's Probability and Statistics syllabus for the BS Computer Science program. It follows the path from describing data to probability, statistical inference, and relationships between variables.</p>
+<p>My focus for this space: keep learning visible, practice with data, and present findings responsibly.</p>
+<span class="badge">Arvin Doña · Baguio, Philippines</span>
+</div>
+<div class="card">
+<h3>Portfolio goals</h3>
+<ul class="list">
+<li>Organize course concepts and learning evidence.</li>
+<li>Practice computations and interpret results.</li>
+<li>Build clear charts, infographics, and dashboards.</li>
+<li>Document sources and the limits of conclusions.</li>
+</ul>
+<p class="small">This is a personal learning portfolio, not an official university website. Project cards below are templates, not claims of completed work.</p>
+</div>
+</div>
+</section>
+<section id="learning">
+<div class="section-head">
+<div>
+<div class="eyebrow">The learning journey</div>
+<h2>Nine units. One foundation.</h2>
+</div>
+<input class="search" id="search" type="search" aria-label="Search course topics" placeholder="Search topics…">
+</div>
+<p class="small" id="progressText" aria-live="polite"></p>
+<div class="progress">
+<div id="progressBar"></div>
+</div>
+<div class="grid" id="units">
+<article class="card unit" data-search="introduction to statistics nature of statistics; types of data and variables; sampling techniques; tables and graphs.">
+<span class="tag">UNIT 01 · Weeks 1–2</span>
+<h3>Introduction to Statistics</h3>
+<p>Nature of statistics; types of data and variables; sampling techniques; tables and graphs.</p>
+<label class="check"><input type="checkbox" data-unit="01"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="central tendency &amp; dispersion mean, median, mode, range, variance, and standard deviation for describing data.">
+<span class="tag">UNIT 02 · Weeks 3–4</span>
+<h3>Central Tendency & Dispersion</h3>
+<p>Mean, median, mode, range, variance, and standard deviation for describing data.</p>
+<label class="check"><input type="checkbox" data-unit="02"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="probability basic concepts, probability rules, permutations, and combinations.">
+<span class="tag">UNIT 03 · Weeks 4–5</span>
+<h3>Probability</h3>
+<p>Basic concepts, probability rules, permutations, and combinations.</p>
+<label class="check"><input type="checkbox" data-unit="03"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="probability distributions random variables and discrete and continuous probability distributions.">
+<span class="tag">UNIT 04 · Weeks 5–6</span>
+<h3>Probability Distributions</h3>
+<p>Random variables and discrete and continuous probability distributions.</p>
+<label class="check"><input type="checkbox" data-unit="04"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="normal distribution normal curves, standard normal distribution, z-scores, and the z-table.">
+<span class="tag">UNIT 05 · Week 8</span>
+<h3>Normal Distribution</h3>
+<p>Normal curves, standard normal distribution, z-scores, and the z-table.</p>
+<label class="check"><input type="checkbox" data-unit="05"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="sampling distribution and central limit theorem">
+<span class="tag">UNIT 06 · Week 9</span>
+<h3>Sampling & Central Limit Theorem</h3>
+<p>Population, sample mean distribution, and the CLT.</p>
+<label class="check"><input type="checkbox" data-unit="06"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="estimation and hypothesis testing point estimation confidence intervals margin error p-value decision rule">
+<span class="tag">UNIT 07 · Week 10</span>
+<h3>Estimation & Hypothesis Testing</h3>
+<p>Confidence intervals, null/alternative hypotheses, p-values, and decision rules.</p>
+<label class="check"><input type="checkbox" data-unit="07"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="correlation and regression scatter plot pearson coefficient simple linear equation prediction">
+<span class="tag">UNIT 08 · Week 11</span>
+<h3>Correlation & Regression</h3>
+<p>Scatter plots, Pearson coefficient, simple linear regression, and predictions.</p>
+<label class="check"><input type="checkbox" data-unit="08"> Mark as reviewed</label>
+</article>
+<article class="card unit" data-search="statistical software application excel spss descriptive correlation analysis">
+<span class="tag">UNIT 09 · Weeks 12–13</span>
+<h3>Statistical Software Application</h3>
+<p>Data entry, management, and analysis using Excel/SPSS.</p>
+<label class="check"><input type="checkbox" data-unit="09"> Mark as reviewed</label>
+</article>
+</div>
+</section>
+
+<section id="projects">
+<div class="eyebrow">Culminating Output</div>
+<h2>Statistical Infographic & Dashboard</h2>
+<div class="two">
+<div>
+<p>An organization wants to educate people about an important issue using statistics. The goal is to transform raw data into meaningful visual information and present it to an audience.</p>
+</div>
+<div class="card">
+<h3>Deliverables</h3>
+<ul class="list">
+<li>Statistical Infographic</li>
+<li>Charts and Graphs</li>
+<li>Measures of Central Tendency and Dispersion</li>
+<li>Probability or Correlation Analysis (if applicable)</li>
+<li>8-10 minute Oral Presentation</li>
+</ul>
+</div>
+</div>
+</section>
+
+<section id="lab">
+<div class="eyebrow">Interactive Space</div>
+<h2>Data Lab</h2>
+<p>Test some basic descriptive statistics right in the browser.</p>
+<div class="two">
+<div>
+<textarea id="dataInput" placeholder="Enter numbers separated by commas (e.g., 12, 15, 20, 8, 30)"></textarea>
+<button class="button primary" id="calcBtn" style="margin-top:10px;">Calculate Stats</button>
+</div>
+<div class="results">
+<div class="result">Mean: <strong id="meanRes">-</strong></div>
+<div class="result">Population Variance: <strong id="varianceRes">-</strong></div>
+</div>
+</div>
+</section>
+</main>
+<footer>
+<div class="wrap">
+<p>&copy; 2026 Arvin Doña & Dan Christian Saile. Probability & Statistics Portfolio.</p>
+</div>
+</footer>
+<script>
+// 1. Theme Toggle
+const themeBtn = document.getElementById('theme');
+themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light');
+});
+
+// 2. Search Filtering for Units
+const searchInput = document.getElementById('search');
+const units = document.querySelectorAll('.unit');
+searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase();
+    units.forEach(unit => {
+        const keywords = unit.getAttribute('data-search').toLowerCase();
+        unit.style.display = keywords.includes(term) ? 'block' : 'none';
+    });
+});
+
+// 3. Progress Tracker functionality
+const checkboxes = document.querySelectorAll('.check input[type="checkbox"]');
+const progressText = document.getElementById('progressText');
+const progressBar = document.getElementById('progressBar');
+
+function updateProgress() {
+    const total = checkboxes.length;
+    const checked = document.querySelectorAll('.check input:checked').length;
+    const percentage = total === 0 ? 0 : Math.round((checked / total) * 100);
+    
+    progressText.textContent = `Progress: ${checked} of ${total} units reviewed (${percentage}%)`;
+    progressBar.style.width = `${percentage}%`;
+}
+
+checkboxes.forEach(box => {
+    box.addEventListener('change', updateProgress);
+});
+updateProgress();
+
+// 4. Data Lab Calculator
+const calcBtn = document.getElementById('calcBtn');
+const dataInput = document.getElementById('dataInput');
+const meanRes = document.getElementById('meanRes');
+const varianceRes = document.getElementById('varianceRes');
+
+calcBtn.addEventListener('click', () => {
+    const rawData = dataInput.value.split(',');
+    const nums = rawData.map(n => parseFloat(n.trim())).filter(n => !isNaN(n));
+    
+    if(nums.length === 0) {
+        meanRes.textContent = '-';
+        varianceRes.textContent = '-';
+        return;
+    }
+    
+    // Calculate Mean
+    const sum = nums.reduce((acc, curr) => acc + curr, 0);
+    const mean = sum / nums.length;
+    
+    // Calculate Population Variance
+    const sqDiffSum = nums.reduce((acc, curr) => acc + Math.pow(curr - mean, 2), 0);
+    const variance = sqDiffSum / nums.length;
+    
+    meanRes.textContent = mean.toFixed(2);
+    varianceRes.textContent = variance.toFixed(2);
+});
+</script>
+</body>
+</html>
